@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+
+.navbarsanmartin {
+    font-family: 'Great Vibes', cursive;
+    font-weight: 13px;
+    background-color: rgb(0, 0, 96);
+    color: white;
+    width: 800%;
+}
+
+
+.small-input {
+    width: 500px; /* Ajusta el ancho según tus necesidades */
+    font-size: 23px; /* Ajusta el tamaño de la fuente según tus necesidades */
+  }
+
+
+  .formulario {
+    text-align: center;
+  }
+  
+
+
+
+
+
