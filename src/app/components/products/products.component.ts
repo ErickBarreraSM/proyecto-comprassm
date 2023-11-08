@@ -27,15 +27,21 @@ export class ProductsComponent implements OnInit {
   public Presentations: any;
   public Price: any;
   public productPrice: any;
+
+  
   // Aquí almacenarás los datos del producto
 
  
 
   ngOnInit(): void {
     this.dataService.getProducts().subscribe((data) => {
+     
       this.productData = data.body.contents;
       this.productDataImg = data.body.images;
       this.Presentations = data.body.presentations;
+      
+     
+     
       
       this.Price = data.body.prices;
       this.productPrice = this.Price[0].price;
