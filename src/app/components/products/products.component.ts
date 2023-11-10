@@ -7,6 +7,7 @@ import { CombosService } from 'src/app/api/combos.service';
 import { Contents } from 'src/app/model/contents.interface';
 import { GetProducts } from 'src/app/model/product.interface';
 import { ProductStock } from 'src/app/model/stock.interface';
+import { ServicesService } from 'src/app/services/services.service';
 
 
 @Component({
@@ -17,16 +18,23 @@ import { ProductStock } from 'src/app/model/stock.interface';
 export class ProductsComponent implements OnInit {
 
   products: GetProducts[] = []; 
+  selectedProducts: any[] = [];
+
   stock: ProductStock[] = [];
   body: Body  [] = []; 
 
-  constructor(private dataService: ProductsService) { }
+  constructor(private dataService: ProductsService , private carrito: ServicesService) { }
 
   public productData: any;
   public productDataImg: any; 
   public Presentations: any;
   public Price: any;
   public productPrice: any;
+
+  public presentationname:any;
+
+
+ 
 
   
   // Aquí almacenarás los datos del producto
@@ -39,6 +47,11 @@ export class ProductsComponent implements OnInit {
       this.productData = data.body.contents;
       this.productDataImg = data.body.images;
       this.Presentations = data.body.presentations;
+      this.presentationname = this.Presentations[0].name;
+      
+      
+      
+
       
      
      
@@ -46,12 +59,20 @@ export class ProductsComponent implements OnInit {
       this.Price = data.body.prices;
       this.productPrice = this.Price[0].price;
       
+      
       this.products = data; 
       console.log('Datos de productos obtenidos:', this.products);
       
     });
   }
- }
+
+  agregarAlCarrito() {
+    // Lógica para agregar el producto actual al carrito
+    this.carrito.agregarAlCarrito(this.productData);
+  }
+  
+}
+ 
 
 
 

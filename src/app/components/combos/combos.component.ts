@@ -40,6 +40,13 @@ export class CombosComponent implements OnInit{
 
     }
 
+
+    getIdTienda() {
+
+      this.router.navigate(['/products']);
+     
+    }
+
 }
  
 

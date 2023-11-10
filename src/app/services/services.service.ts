@@ -4,7 +4,19 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class ServicesService {
-  private apiUrl = 'http://192.168.111.13:3001/api/v1/products/5';
+  private carrito: any[] = [];
 
-  constructor() { }
+  agregarAlCarrito(producto: any) {
+    this.carrito.push(producto);
+  }
+
+  obtenerCarrito() {
+    return this.carrito;
+  }
+
+  limpiarCarrito() {
+    this.carrito = [];
+  }
+
+  
 }

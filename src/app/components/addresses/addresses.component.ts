@@ -40,7 +40,7 @@ export class AddressesComponent implements OnInit {
       const nombreTienda = data.body[0].path;
 
       // Navega a la ruta del componente de destino y pasa el blog_id y el nombre de la tienda como parámetros en la URL
-      this.router.navigate(['/combos', idTienda]);
+      this.router.navigate(['/combos', idTienda ]);
     });
   }
 

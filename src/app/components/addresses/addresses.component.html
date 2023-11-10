@@ -1,44 +1,37 @@
-<div>
-  <div class="mx-auto max-w-xl text-center">
-    <h2 class="text-lg font-semibold leading-8 tracking-tight text-indigo-600">Direcciones</h2>
-    <p class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Direcciones registradas con ese numero</p><br>
-  </div>
-  <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-    <ng-container *ngFor="let add of address">
-      <div class="col-span-1">
-        <div class="flex flex-col divide-y divide-gray-200 rounded-lg bg-white text-center shadow">
-          <div class="flex flex-1 flex-col p-8">
-            <h3 class="mt-6 text-sm font-medium text-gray-900" >{{add.Nombre}} {{add.Apellido}}</h3>
-
-            <dl class="mt-1 flex flex-grow flex-col justify-between">
-              <dd class="text-sm text-black">Nit: {{add.Nit}}</dd>
-              <dd class="text-sm text-black">Direccion: {{add.Direccion}}</dd>
-              <dd class="text-sm text-black">email: {{add.email}}</dd>
-              <dd class="text-sm text-black">Numero de telefono: {{add.Numero}}</dd>
-              <dt class="sr-only">Role</dt>
-              <dd class="mt-3">
-                <span class="inline-flex items-center rounded-full bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20">Direccion</span>
-              </dd>
-            </dl>
+<div class="p-4 md:p-10 space-y-50  space-x-50 md:space-y-0 md:space-x-4 grid grid-cols-1 md:grid-cols-2 gap-4 my-20">
+  <div *ngFor="let add of address">
+    <li class="divide-y divide-gray-200 rounded-lg bg-white shadow">
+      <div class="flex flex-col md:flex-row items-center justify-between space-y-2 md:space-y-0 md:space-x-6 p-6">
+        <div class="md:flex-1 truncate">
+          <div class="flex items-center space-x-3">
+            <h3 class="truncate text-sm font-medium text-gray-900">{{add.Nombre}}</h3>
+            <h3 class="truncate text-sm font-medium text-gray-900">{{add.Apellido}}</h3>
           </div>
-          <div>
-            <div class="-mt-px flex divide-x divide-gray-200">
-             
-              <div class="-ml-px flex w-0 flex-1">
-                <a (click)="getIdTienda(add.Link_tienda)" class="relative inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-br-lg border border-transparent py-4 text-sm font-semibold text-gray-900" >
-                  <svg class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                    <path fill-rule="evenodd" d="M2 3.5A1.5 1.5 0 013.5 2h1.148a1.5 1.5 0 011.465 1.175l.716 3.223a1.5 1.5 0 01-1.052 1.767l-.933.267c-.41.117-.643.555-.48.950a11.542 11.542 0 006.254 6.254c.395.163.833-.070.950-.480l.267-.933a1.5 1.5 0 011.767-1.052l3.223.716A1.5 1.5 0 0118 15.352V16.5a1.5 1.5 0 01-1.5 1.5H15c-1.149 0-2.263-.150-3.326-.430A13.022 13.022 0 012.430 8.326 13.019 13.019 0 012 5V3.5z" clip-rule="evenodd" />
-                  </svg>
-                  ver tienda
-                </a>
-              </div>
-            </div>
+          <p class="mt-1 truncate text-sm text-gray-500">Numero:  {{add.Numero}}</p>
+          <div class="mt-2 truncate text-sm text-gray-500 address-container">
+            <h1>{{add.Direccion}}</h1>
+          </div>
+          <p class="mt-1 truncate text-sm text-gray-500">Nit:  {{add.Nit}}</p>
+          <p class="mt-1 truncate text-sm text-gray-500">Email:  {{add.email}}</p>
+
+        </div>
+        <img class="h-10 w-10 flex-shrink-0 rounded-full bg-gray-300" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60" alt="">
+      </div>
+      <div>
+        <div class="-mt-px flex divide-x divide-gray-200">
+
+          <div class="-ml-px flex w-0 flex-1">
+            <a (click)="getIdTienda(add.Link_tienda)" class="relative inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-br-lg border border-transparent py-4 text-sm font-semibold text-gray-900">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round"  />
+              </svg>
+              
+              Tienda
+            </a>
           </div>
         </div>
       </div>
-    </ng-container>
+    </li>
   </div>
+  <!-- ... -->
 </div>
-
-
-  

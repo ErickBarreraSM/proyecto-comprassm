@@ -99,19 +99,19 @@
                     </div>
                    
                     <div *ngIf="Presentations && Presentations.length > 0" class="text-white">
-                      <h1 class="font-bold text-3xl">Ejemplo1:</h1><br>
-                      <div class="space-y-2">
-                        <ng-container *ngFor="let product of Presentations">
-                          <ng-container *ngFor="let presentation of product.presentation; let i = index">
-                            <label [for]="'sopa' + i" class="flex items-center space-x-2">
-                              <input type="checkbox" [id]="'sopa' + i" class="form-checkbox text-indigo-600" />
-                              <h4>{{ presentation.name }}</h4>
-                              <h4>{{ presentation.price }}</h4>
-                            </label>
+                        <div class="space-y-2">
+                          <ng-container *ngFor="let product of Presentations; let j = index">
+                            <h1 class="font-bold text-3xl">{{product.name}}</h1><br>
+                            <ng-container *ngFor="let presentation of product.presentation; let i = index">
+                              <label [for]="'sopa' + i + j" class="flex items-center space-x-2">
+                                <input type="checkbox" [id]="'sopa' + i + j" class="form-checkbox text-indigo-600" />
+                                <h4>{{ presentation.name }}</h4>
+                               
+                              </label>
+                            </ng-container>
                           </ng-container>
-                        </ng-container>
-                      </div>
-                    </div><br>
+                        </div>
+                      </div><br>
                       
                       
                       
@@ -158,7 +158,7 @@
                     </div>
                     <div class="flex flex-wrap items-center -mx-4 ">
                         <div class="w-full px-4 mb-4 lg:w-1/2 lg:mb-0">
-                            <button
+                            <button (click)="agregarAlCarrito()"
                                 class="flex items-center justify-center w-full p-4 text-blue-500 border border-blue-500 rounded-md dark:text-gray-200 dark:border-blue-600 hover:bg-blue-600 hover:border-blue-600 hover:text-gray-100 dark:bg-blue-600 dark:hover:bg-blue-700 dark:hover:border-blue-700 dark:hover:text-gray-300">
                                 Add to Cart
                             </button>
