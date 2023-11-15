@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ProductsService } from 'src/app/api/products.service';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { ServicesService } from 'src/app/services/services.service';
+import { CartService } from 'src/app/api/cart.service';
+import { PaymentService } from 'src/app/api/payment-service.service';
 
 @Component({
   selector: 'app-cart',
@@ -9,61 +12,63 @@ import { Router } from '@angular/router';
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent implements OnInit {
-  itemName: string = '';
-  sopas: string = '';
-  sandwich: string = '';
-  ensalada: string = '';
-  itemDescription: string = '';
+  paymentHandler:any = null;
+  selectedOptions: any[] = [];
 
+  constructor(private cartService: CartService, private paymentService: PaymentService) {}
 
-
-  public carrito: any;
-
-  constructor(private http: HttpClient, private route: Router) {}
-
-  ngOnInit() {
-    this.getProducts();
-  }
-
-  getProducts() {
-    this.http.get('http://localhost:3000/items  ').subscribe((data: any) => {
-      this.carrito = data;
+  ngOnInit(): void {
+    this.invokeStripe();
+    // Suscríbete al servicio para recibir actualizaciones del carrito
+    this.cartService.selectedOptions$.subscribe(options => {
+      this.selectedOptions = options;
     });
   }
 
-  irPagina(titulo: string): void {
-    console.log(titulo);
-    this.route.navigate(['cart']);
+
+  limpiarCarrito(): void {
+    // Llama al método del servicio para limpiar el carrito
+    this.cartService.clearCart();
   }
 
-  onSubmit() {
-    const newItem = {
-      name: this.itemName,
-      sopas: this.sopas,
-      sandwich: this.sandwich,
-      ensalada: this.ensalada,
-      description: this.itemDescription,
-    };
-
-    this.http.post('http://localhost:3000/items', newItem).subscribe(response => {
-      console.log('Item guardado:', response);
-      // Limpia el formulario después de guardar
-      this.itemName = '';
-      this.itemDescription = '';
-
-      // Recargar la lista de productos después de agregar uno nuevo
-      this.getProducts();
+  initializePayment(amount: number) {
+    const paymentHandler = (<any>window).StripeCheckout.configure({
+      key: 'pk_test_51OCTzVAq1EczSRYWn7o2sgWzomzREP6NViKn5xuT7ZZGQqub85XM7E6Y1hlMAXmMKqT9keKANBug6EtBbaUi8mZE00XbNhXwcj',
+      locale: 'auto',
+      token: function (stripeToken: any) {
+        console.log({stripeToken})
+        alert('Stripe token generated!');
+      }
+    });
+  
+    paymentHandler.open({
+      name: 'Dos de tres',
+      description: 'Buying a menu',
+      amount: amount * 100
     });
   }
 
-  // Método para eliminar un elemento
-  deleteItem(id: number) {
-    this.http.delete(`http://localhost:3000/items/${id}`)
-      .subscribe(response => {
-        console.log('Item eliminado:', response);
-        // Recargar la lista de productos después de eliminar uno
-        this.getProducts();
-      });
+  invokeStripe() {
+    if(!window.document.getElementById('stripe-script')) {
+      const script = window.document.createElement("script");
+      script.id = "stripe-script";
+      script.type = "text/javascript";
+      script.src = "https://checkout.stripe.com/checkout.js";
+      script.onload = () => {
+        this.paymentHandler = (<any>window).StripeCheckout.configure({
+          key: 'pk_test_51OCTzVAq1EczSRYWn7o2sgWzomzREP6NViKn5xuT7ZZGQqub85XM7E6Y1hlMAXmMKqT9keKANBug6EtBbaUi8mZE00XbNhXwcj',
+          locale: 'auto',
+          token: function (stripeToken: any) {
+            console.log(stripeToken)
+            alert('Payment has been successfull!');
+          }
+        });
+      }
+      window.document.body.appendChild(script);
+    }
   }
+
+
+ 
 }
 

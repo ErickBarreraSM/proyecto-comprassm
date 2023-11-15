@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { map, switchMap } from 'rxjs';
+import { ApiExternalService } from 'src/app/api/api-external.service';
 import { CombosService } from 'src/app/api/combos.service';
+import { SharedCategoryService } from 'src/app/api/shared-category.service';
 import { GetCombos } from 'src/app/model/combos.interface';
 
 
@@ -13,39 +15,57 @@ import { GetCombos } from 'src/app/model/combos.interface';
 export class CombosComponent implements OnInit{
   idTienda!: string;
   products: any[] = [];
+   // Asegúrate de inicializar esto con tus datos reales
+   selectedCategory: string = '';
+  
 
-  constructor(private route: ActivatedRoute,private combosservice: CombosService, private router: Router ) {}
+  constructor(private route: ActivatedRoute,private combosservice: CombosService,private service: ApiExternalService, private router: Router, private sharedCategoryService: SharedCategoryService ) {}
 
  
 
 
-    ngOnInit() {
-      this.route.paramMap.pipe(
+  ngOnInit() {
+    // Obtén la categoría seleccionada desde el servicio
+    this.sharedCategoryService.selectedCategory$.subscribe((category: string) => {
+      this.selectedCategory = category;
+    });
+
+    this.route.paramMap
+      .pipe(
         switchMap((params: ParamMap) => {
           this.idTienda = params.get('idTienda') || '';
-          //console.log(this.numeroTelefono);
           return this.combosservice.getProducts(this.idTienda);
         })
-      ).subscribe((data: GetCombos) => {
+      )
+      .subscribe((data: GetCombos) => {
         if (data && data.body && Array.isArray(data.body)) {
           this.products = data.body;
-          console.log(this.products);
-          // Asigna la propiedad 'body' a this.address
-          //console.log('Datos de dirección:', data);
         } else {
-          //console.error('Los datos de dirección no son válidos:', data);
-          // Puedes manejar este caso según tus necesidades, como mostrar un mensaje de error.
+          // Maneja el caso cuando los datos no son válidos
         }
       });
+  }
 
+
+  getIdTienda(linkTienda: string) {
+    this.service.getTienda(linkTienda).subscribe((data: any) => {
+      console.log(data.body[0].blog_id);
+      console.log(data.body[0].path);
+
+      const idTienda = data.body[0].blog_id;
+      const nombreTienda = data.body[0].path;
+
+      // Navega a la ruta del componente de destino y pasa el blog_id y el nombre de la tienda como parámetros en la URL
+      this.router.navigate(['/products', idTienda ]);
+    });
+  }
+
+    changeCategory(category: string): void {
+      this.selectedCategory = this.selectedCategory === category ? '' : category;
     }
 
+    
 
-    getIdTienda() {
-
-      this.router.navigate(['/products']);
-     
-    }
 
 }
  

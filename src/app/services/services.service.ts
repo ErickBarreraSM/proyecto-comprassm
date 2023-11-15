@@ -4,19 +4,16 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class ServicesService {
-  private carrito: any[] = [];
+  private cartItems: any[] = [];
 
-  agregarAlCarrito(producto: any) {
-    this.carrito.push(producto);
-  }
-
-  obtenerCarrito() {
-    return this.carrito;
-  }
-
-  limpiarCarrito() {
-    this.carrito = [];
+  constructor() {
+    // Recuperar los productos del localStorage al inicializar el servicio
+   
   }
 
   
+
+  
+  
 }
+

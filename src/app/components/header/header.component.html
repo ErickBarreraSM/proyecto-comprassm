@@ -1,8 +1,8 @@
 <nav class="bg-white shadow">
   <div class="mx-auto max-w-7xl px-2 sm:px-4 lg:px-8">
-    <div class="flex h-16 justify-between">
+    <div class="flex h-16 justify-between lg:flex lg:items-center">
       <div class="flex px-2 lg:px-0">
-        <div class="flex flex-shrink-0 items-center">
+        <div class="flex-shrink-0 items-center lg:mr-6">
           <img class="h-8 w-auto" src="https://sanmartinbakery.com/wp-content/uploads/2022/01/Logo-azul-SM-1024x269.png" alt="Your Company">
         </div>
         <div class="hidden lg:ml-6 lg:flex lg:space-x-8">
@@ -34,49 +34,47 @@
               aria-labelledby="dropdownMenuButton2"
               data-te-dropdown-menu-ref>
               <li>
-                <a
-                  class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-neutral-600"
-                  href="#"
-                  data-te-dropdown-item-ref
-                  >Galletas</a
-                >
-              </li>
+  <a (click)="changeCategory('galletas')"
+    class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-neutral-600"
+    data-te-dropdown-item-ref
+  >Galletas</a>
+</li>
               <li>
-                <a
+                <a (click)="changeCategory('gluten')"
                   class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-neutral-600"
-                  href="#"
+                  
                   data-te-dropdown-item-ref
                   >Gluten Free</a
                 >
               </li>
               <li>
-                <a
+                <a a (click)="changeCategory('tradicional')"
                   class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-neutral-600"
-                  href="#"
+                  
                   data-te-dropdown-item-ref
                   >Pan</a
                 >
               </li>
               <li>
-                <a
+                <a (click)="changeCategory('listo-para-hornear')"
                   class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-neutral-600"
-                  href="#"
+                  
                   data-te-dropdown-item-ref
                   >Pan Congelado</a
                 >
               </li>
               <li>
-                <a
+                <a (click)="changeCategory('reposteria')"
                   class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-neutral-600"
-                  href="#"
+                  
                   data-te-dropdown-item-ref
                   >Reposteria</a
                 >
               </li>
               <li>
-                <a
+                <a (click)="changeCategory('tostaditos')"
                   class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-neutral-600"
-                  href="#"
+                  
                   data-te-dropdown-item-ref
                   >Tostaditos</a
                 >
@@ -86,7 +84,7 @@
           <div class="relative ml-2" data-te-dropdown-ref>
             <a
               class="flex items-center px-6 pb-2 pt-2.5  focus:text-neutral-700 disabled:text-black/30 motion-reduce:transition-none  lg:px-2 [&.active]:text-black/90 dark:[&.active]:text-neutral-400"
-              href="#"
+              
               type="button"
               id="dropdownMenuButton2"
               data-te-dropdown-toggle-ref
@@ -110,13 +108,39 @@
               aria-labelledby="dropdownMenuButton2"
               data-te-dropdown-menu-ref>
               <li>
-                <a
-                  class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-neutral-600"
-                  href="#"
-                  data-te-dropdown-item-ref
-                  >Almuerzos y Cenas</a
-                >
-              </li>
+                <div class="relative ml-2" data-te-dropdown-ref>
+                    <a class="flex items-center px-6 pb-2 pt-2.5  focus:text-neutral-700 disabled:text-black/30 motion-reduce:transition-none  lg:px-2 [&.active]:text-black/90 dark:[&.active]:text-neutral-400"
+                        type="button" id="dropdownMenuButton2" data-te-dropdown-toggle-ref aria-expanded="false">
+                        Almuerzos y Cenas
+                        <span class="ml-2 w-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5">
+                                <path fill-rule="evenodd"
+                                    d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                        </span>
+                    </a>
+                    <ul class="absolute z-[1000] float-left m-0 hidden min-w-max list-none overflow-hidden rounded-lg border-none bg-white bg-clip-padding text-left text-base shadow-lg dark:bg-neutral-700 [&[data-te-dropdown-show]]:block"
+                        aria-labelledby="dropdownMenuButton2" data-te-dropdown-menu-ref>
+                        <li>
+                            <a class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-neutral-600"
+                                href="#" data-te-dropdown-item-ref>Option 1</a>
+                        </li>
+                        <li>
+                            <a class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-neutral-600"
+                                href="#" data-te-dropdown-item-ref>Option 2</a>
+                        </li>
+                        <li>
+                            <a class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-neutral-600"
+                                href="#" data-te-dropdown-item-ref>Option 3</a>
+                        </li>
+                        <li>
+                            <a class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-neutral-600"
+                                href="#" data-te-dropdown-item-ref>Option 4</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
               <li>
                 <a
                   class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-neutral-600"
@@ -470,8 +494,29 @@
               </li>
             </ul>
           </div>
+          <div class="relative ml-2" data-te-dropdown-ref>
+            <a
+              class="flex items-center px-6 pb-2 pt-2.5  focus:text-neutral-700 disabled:text-black/30 motion-reduce:transition-none  lg:px-2 [&.active]:text-black/90 dark:[&.active]:text-neutral-400"
+              
+              type="button"
+              id="dropdownMenuButton2"
+              data-te-dropdown-toggle-ref
+              aria-expanded="false">
+              {{totalcartImtem}}
+            
+              <span class="ml-2 w-2">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
+                </svg>
+                
+              </span>
+            </a>
+          </div>
         </div>     
       </div>
     </div>
+  </div>
+  <div>
+    
   </div>
 </nav>

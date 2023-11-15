@@ -16,6 +16,9 @@ import { CombosComponent } from './components/combos/combos.component';
 import { PruebaComponent } from './components/prueba/prueba.component';
 import { AddressesComponent } from './components/addresses/addresses.component';
 import { CategoriaproductosComponent } from './components/categoriaproductos/categoriaproductos.component';
+import { CategoryFilterPipe } from './pipes/category-filter.pipe';
+import { SharedCategoryService } from './api/shared-category.service';
+import { PaymentGatewayComponent } from './payment-gateway/payment-gateway.component';
 
 
 @NgModule({
@@ -29,6 +32,8 @@ import { CategoriaproductosComponent } from './components/categoriaproductos/cat
     PruebaComponent,
     AddressesComponent,
     CategoriaproductosComponent,
+    CategoryFilterPipe,
+    PaymentGatewayComponent,
    
     
     
@@ -43,7 +48,7 @@ import { CategoriaproductosComponent } from './components/categoriaproductos/cat
     FormsModule
     
   ],
-  providers: [],
+  providers: [SharedCategoryService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

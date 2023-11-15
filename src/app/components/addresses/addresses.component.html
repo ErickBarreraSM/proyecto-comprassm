@@ -1,37 +1,56 @@
-<div class="p-4 md:p-10 space-y-50  space-x-50 md:space-y-0 md:space-x-4 grid grid-cols-1 md:grid-cols-2 gap-4 my-20">
-  <div *ngFor="let add of address">
-    <li class="divide-y divide-gray-200 rounded-lg bg-white shadow">
-      <div class="flex flex-col md:flex-row items-center justify-between space-y-2 md:space-y-0 md:space-x-6 p-6">
-        <div class="md:flex-1 truncate">
-          <div class="flex items-center space-x-3">
-            <h3 class="truncate text-sm font-medium text-gray-900">{{add.Nombre}}</h3>
-            <h3 class="truncate text-sm font-medium text-gray-900">{{add.Apellido}}</h3>
-          </div>
-          <p class="mt-1 truncate text-sm text-gray-500">Numero:  {{add.Numero}}</p>
-          <div class="mt-2 truncate text-sm text-gray-500 address-container">
-            <h1>{{add.Direccion}}</h1>
-          </div>
-          <p class="mt-1 truncate text-sm text-gray-500">Nit:  {{add.Nit}}</p>
-          <p class="mt-1 truncate text-sm text-gray-500">Email:  {{add.email}}</p>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Título de tu página</title>
+  <!-- Aquí puedes incluir tus estilos y scripts necesarios -->
+</head>
+<body>
 
-        </div>
-        <img class="h-10 w-10 flex-shrink-0 rounded-full bg-gray-300" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60" alt="">
-      </div>
-      <div>
-        <div class="-mt-px flex divide-x divide-gray-200">
-
-          <div class="-ml-px flex w-0 flex-1">
-            <a (click)="getIdTienda(add.Link_tienda)" class="relative inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-br-lg border border-transparent py-4 text-sm font-semibold text-gray-900">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                <path stroke-linecap="round" stroke-linejoin="round"  />
-              </svg>
-              
-              Tienda
-            </a>
-          </div>
-        </div>
-      </div>
-    </li>
+  <!-- Bienvenida -->
+  <div class="text-center my-10">
+    <h1 class="text-3xl font-bold text-gray-800">¡Bienvenido a San Martín</h1>
+    <p class="text-lg text-gray-600">Descubre la información de tus direcciones registradas a continuación:</p>
   </div>
-  <!-- ... -->
-</div>
+
+  <!-- Lista de direcciones con imagen -->
+  <div class="p-4 md:p-10 space-y-50 space-x-50 md:space-y-0 md:space-x-4 grid grid-cols-1 md:grid-cols-2 gap-4 my-20">
+    <div *ngFor="let add of address">
+      <li class="divide-y divide-gray-200 rounded-lg bg-white shadow">
+        <div class="flex flex-col md:flex-row items-center justify-between space-y-2 md:space-y-0 md:space-x-6 p-6">
+          <div class="md:flex-1 truncate">
+            <div class="flex items-center space-x-3">
+              <h3 class="truncate text-sm font-medium text-gray-900">{{add.Nombre}}</h3>
+              <h3 class="truncate text-sm font-medium text-gray-900">{{add.Apellido}}</h3>
+            </div>
+            <p class="mt-1 truncate text-sm text-gray-500">Numero:  {{add.Numero}}</p>
+            <div class="mt-2 truncate text-sm text-gray-500 address-container">
+              <h1>{{add.Direccion}}</h1>
+            </div>
+            <p class="mt-1 truncate text-sm text-gray-500">Nit:  {{add.Nit}}</p>
+            <p class="mt-1 truncate text-sm text-gray-500">Email:  {{add.email}}</p>
+          </div>
+          <img class="h-10 w-10 flex-shrink-0 rounded-full bg-gray-300" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60" alt="">
+        </div>
+        <div>
+          <div class="-mt-px flex divide-x divide-gray-200">
+            <div class="-ml-px flex w-0 flex-1">
+              <a (click)="getIdTienda(add.Link_tienda)" class="relative inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-br-lg border border-transparent py-4 text-sm font-semibold text-gray-900">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                  <path stroke-linecap="round" stroke-linejoin="round"  />
+                </svg>
+                Tienda
+              </a>
+            </div>
+          </div>
+        </div>
+      </li>
+    </div>
+    <!-- ... -->
+  </div>
+
+  <!-- Puedes incluir más contenido o scripts al final de tu página si es necesario -->
+
+</body>
+</html>

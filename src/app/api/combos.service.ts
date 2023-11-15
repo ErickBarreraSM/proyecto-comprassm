@@ -9,6 +9,8 @@ import { Router } from '@angular/router';
   providedIn: 'root',
 })
 export class CombosService {
+
+  private apiGetTienda ='http://192.168.111.13:3001/api/v1/blog/';
   private apiUrl = 'http://192.168.111.13:3001/api/v1/products/';
 
   constructor(private http: HttpClient) {}

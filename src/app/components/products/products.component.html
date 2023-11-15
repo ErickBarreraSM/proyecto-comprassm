@@ -49,7 +49,7 @@
                     <div class="mb-8 ">
                         <div *ngIf="productData">
                         <span class="text-lg font-medium text-rose-500 dark:text-rose-200">Nuevo</span>
-                        <h2 class="max-w-xl mt-2 mb-6 text-2xl font-bold dark:text-gray-400 md:text-4xl">{{ productData.name_es }}</h2>
+                        <h2 class="max-w-xl mt-2 mb-6 text-2xl font-bold dark:text-gray-400 md:text-4xl">{{ productData }}</h2>
                         </div>
                         <div class="flex items-center mb-6">
                             <ul class="flex mr-2">
@@ -83,7 +83,7 @@
                             {{ productData.description_es }}
                         </p>
                         <p class="inline-block mb-8 text-4xl font-bold text-gray-700 dark:text-gray-400 ">
-                            <span>{{ productPrice }}</span>
+                            <span>Q.{{ productPrice }}</span>
                             
                         </p>
                         <p class="text-green-600 dark:text-green-300 ">7 in stock</p>
@@ -98,15 +98,15 @@
                           </fieldset>
                     </div>
                    
-                    <div *ngIf="Presentations && Presentations.length > 0" class="text-white">
+                    <div *ngIf="Presentations && Presentations.length > 0" class="text-black">
                         <div class="space-y-2">
                           <ng-container *ngFor="let product of Presentations; let j = index">
                             <h1 class="font-bold text-3xl">{{product.name}}</h1><br>
                             <ng-container *ngFor="let presentation of product.presentation; let i = index">
                               <label [for]="'sopa' + i + j" class="flex items-center space-x-2">
-                                <input type="checkbox" [id]="'sopa' + i + j" class="form-checkbox text-indigo-600" />
+                                <input type="checkbox" [id]="'sopa' + i + j" class="form-checkbox text-indigo-600"
+                                       [(ngModel)]="checkboxState[j][i]" />
                                 <h4>{{ presentation.name }}</h4>
-                               
                               </label>
                             </ng-container>
                           </ng-container>
@@ -157,16 +157,15 @@
                         </div>
                     </div>
                     <div class="flex flex-wrap items-center -mx-4 ">
-                        <div class="w-full px-4 mb-4 lg:w-1/2 lg:mb-0">
-                            <button (click)="agregarAlCarrito()"
-                                class="flex items-center justify-center w-full p-4 text-blue-500 border border-blue-500 rounded-md dark:text-gray-200 dark:border-blue-600 hover:bg-blue-600 hover:border-blue-600 hover:text-gray-100 dark:bg-blue-600 dark:hover:bg-blue-700 dark:hover:border-blue-700 dark:hover:text-gray-300">
-                                Add to Cart
+                        <div class="w-full px-4 mb-4 lg:w-1/2">
+                            <button (click)="guardarYMostrar()"  class="flex items-center justify-center w-full p-4 text-blue-500 border border-blue-500 rounded-md dark:text-gray-200 dark:border-blue-600 hover:bg-blue-600 hover:border-blue-600 hover:text-gray-100 dark:bg-blue-600 dark:hover:bg-blue-700 dark:hover:border-blue-700 dark:hover:text-gray-300">
+                              Ir al Carrito
                             </button>
-                        </div>
+                          </div>
                         <div class="w-full px-4 mb-4 lg:mb-0 lg:w-1/2">
-                            <button
+                            <button     
                                 class="flex items-center justify-center w-full p-4 text-blue-500 border border-blue-500 rounded-md dark:text-gray-200 dark:border-blue-600 hover:bg-blue-600 hover:border-blue-600 hover:text-gray-100 dark:bg-blue-600 dark:hover:bg-blue-700 dark:hover:border-blue-700 dark:hover:text-gray-300">
-                                Add to wishlist
+                                Remover del carrito
                             </button>
                         </div>
                     </div>

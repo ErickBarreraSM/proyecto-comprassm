@@ -9,12 +9,14 @@ import { AddressesComponent } from './components/addresses/addresses.component';
 
 
 const routes: Routes = [
-  {path:'', component:HomeComponent},
-  {path:'cart', component:CartComponent},
-  {path:'prueba', component:PruebaComponent},
+  { path:'', component:HomeComponent},
+  
+  { path:'prueba', component:PruebaComponent},
   { path: 'combos/:idTienda', component: CombosComponent},
   
   { path: 'products', component: ProductsComponent },
+  { path:'cart', component:CartComponent},
+  
   { path: 'telefono/:numeroTelefono', component: AddressesComponent },
 
  
